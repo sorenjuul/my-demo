@@ -12,15 +12,17 @@ export type Machine = {
   type: EquipmentType;
   uptime: string;
   data: State[];
-  order?: Order;
+  orderId?: number;
   queue?: OrderQueue;
 };
 export type Order = {
   id: number;
   type: EquipmentType;
+  quantity: number;
+  model: string;
 };
 export type OrderRun = {
-  order: Order;
+  orderId: number;
   start: Date;
   end: Date;
 };
@@ -28,4 +30,4 @@ export type OrderQueueItem = {
   order: Order;
   machine: Machine;
 };
-export type OrderQueue = OrderQueueItem[];
+export type OrderQueue = Order[];

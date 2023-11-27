@@ -18,7 +18,7 @@ export const mockStateColor: StateColor[] = ['emerald', 'yellow', 'rose'];
 export const mockEquipmentType: EquipmentType[] = ['Type 1', 'Type 2', 'Type 3'];
 
 export const mockState = (): State[] => [
-  ...Array.from({ length: 23 }, () => {
+  ...Array.from({ length: 24 }, () => {
     const random = Math.floor(Math.random() * mockStateColor.length);
     return {
       color: mockStateColor[random],
@@ -27,9 +27,17 @@ export const mockState = (): State[] => [
   }),
 ];
 
-export const mockOrder: Order = {
-  id: Math.floor(Math.random() * 100),
-  type: mockEquipmentType[Math.floor(Math.random() * mockEquipmentType.length)],
+export const mockOrder = (type: EquipmentType): Order => {
+  return {
+    id: Math.floor(Math.random() * 100000),
+    type,
+    quantity: Math.floor(Math.random() * 1000),
+    model:
+      'Mock Model ' +
+      Math.floor(Math.random() * 1000)
+        .toString()
+        .padStart(3, '0'),
+  };
 };
 
 export const mockMachine = (): Machine => {
@@ -44,27 +52,28 @@ export const mockMachine = (): Machine => {
     type: mockEquipmentType[Math.floor(Math.random() * mockEquipmentType.length)],
     uptime: `${Math.floor(Math.random() * 100)}%`,
     data: currentMockState,
-    order: mockOrder,
+    orderId: Math.floor(Math.random() * 100000),
     currentState: currentMockState[currentMockState.length - 1],
   };
 };
 
 export const mockOrderRun: OrderRun = {
-  order: mockOrder,
+  orderId: Math.floor(Math.random() * 100000),
   start: new Date(),
   end: new Date(),
 };
-
-export const mockOrderQueue: OrderQueue = [];
 
 export const getMockMachines = (): Machine[] => {
   if (mockMachinesStorage.length) {
     return mockMachinesStorage;
   }
-  mockMachinesStorage = Array.from({ length: 11 }, () => mockMachine());
+  mockMachinesStorage = Array.from({ length: 12 }, () => mockMachine());
   mockMachinesStorage.sort((a, b) => (a.title > b.title ? 1 : -1));
   return mockMachinesStorage;
 };
 
-export const getMockMachine = (slug: string): Machine | undefined =>
-  mockMachinesStorage.find((m) => slugify(m.title) === slug);
+export const getMockOrderQueue = (type: EquipmentType): OrderQueue => {
+  return Array.from({ length: 12 }, () => {
+    return mockOrder(type);
+  });
+};
