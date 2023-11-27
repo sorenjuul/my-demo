@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
+import { Tab, TabGroup, TabList, Text, Title } from '@tremor/react';
+import Link from 'next/link';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -12,7 +14,22 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <main className="p-12">
+          <Title>Equipment Dashboard</Title>
+          <Text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</Text>
+
+          <TabGroup className="mt-6">
+            <TabList>
+              <Link href="/">
+                <Tab>Overview</Tab>
+              </Link>
+              <Tab>Detail</Tab>
+            </TabList>
+            <>{children}</>
+          </TabGroup>
+        </main>
+      </body>
     </html>
   );
 }

@@ -3,76 +3,78 @@
 import { Card, Grid, Tab, TabGroup, TabList, TabPanel, TabPanels, Text, Title } from '@tremor/react';
 import EquipmentStateCard from '@/app/components/equipment-state-card';
 
-const website = [
-  { color: 'emerald', tooltip: 'Operational' },
-  { color: 'rose', tooltip: 'Downtime' },
-  // ...
-  { color: 'emerald', tooltip: 'Operational' },
-  { color: 'emerald', tooltip: 'Operational' },
-];
+type StateText = 'Producing normally' | 'Starting up/Winding down' | 'Standing still';
+type StateColor = 'emerald' | 'yellow' | 'rose';
+type State = {
+  color: StateColor;
+  tooltip: StateText;
+};
+type EquipmentType = 'Type 1' | 'Type 2' | 'Type 3';
+export type Machine = {
+  title: string;
+  type: EquipmentType;
+  uptime: string;
+  data: State[];
+};
 
-const pos = [
-  { color: 'emerald', tooltip: 'Operational' },
-  { color: 'emerald', tooltip: 'Operational' },
-  // ...
-  { color: 'emerald', tooltip: 'Operational' },
-  { color: 'emerald', tooltip: 'Operational' },
-];
-
-const webshop = [
-  { color: 'emerald', tooltip: 'Operational' },
-  { color: 'gray', tooltip: 'Maintenance' },
-  // ...
-  { color: 'emerald', tooltip: 'Operational' },
-  { color: 'emerald', tooltip: 'Operational' },
-];
-
-const categories = [
+const machine1: State[] = [
+  // generate a list of 24 states
+  ...Array.from({ length: 24 }, () => ({
+    color: 'emerald' as StateColor,
+    tooltip: 'Producing normally' as StateText,
+  })),
   {
-    title: 'Website',
-    metric: '98.3%',
-    data: website,
+    color: 'yellow',
+    tooltip: 'Starting up/Winding down',
+  },
+];
+
+const machine2: State[] = [
+  // generate a list of 24 states
+  ...Array.from({ length: 24 }, () => ({
+    color: 'emerald' as StateColor,
+    tooltip: 'Producing normally' as StateText,
+  })),
+  {
+    color: 'rose',
+    tooltip: 'Standing still',
+  },
+];
+
+const machines: Machine[] = [
+  {
+    title: 'Machine 1',
+    type: 'Type 1',
+    uptime: '98.3%',
+    data: machine1,
   },
   {
-    title: 'Point of Sales',
-    metric: '97.1%',
-    data: pos,
-  },
-  {
-    title: 'Webshop',
-    metric: '99.4%',
-    data: webshop,
+    title: 'Machine 2',
+    type: 'Type 3',
+    uptime: '95.3%',
+    data: machine2,
   },
 ];
 
 export default function DashboardExample() {
   return (
-    <main className="p-12">
-      <Title>Equipment Dashboard</Title>
-      <Text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</Text>
-
-      <TabGroup className="mt-6">
-        <TabList>
-          <Tab>Overview</Tab>
-          <Tab>Detail</Tab>
-        </TabList>
-        <TabPanels>
-          <TabPanel>
-            <Grid numItemsMd={2} numItemsLg={3} className="gap-6 mt-6">
-              {categories.map((item) => (
-                <EquipmentStateCard item={item} key={item.title} />
-              ))}
-            </Grid>
-          </TabPanel>
-          <TabPanel>
-            <div className="mt-6">
-              <Card>
-                <div className="h-96" />
-              </Card>
-            </div>
-          </TabPanel>
-        </TabPanels>
-      </TabGroup>
-    </main>
+    <>
+      <TabPanels>
+        <TabPanel>
+          <Grid numItemsMd={2} numItemsLg={3} className="gap-6 mt-6">
+            {machines.map((item) => (
+              <EquipmentStateCard item={item} key={item.title} />
+            ))}
+          </Grid>
+        </TabPanel>
+        <TabPanel>
+          <div className="mt-6">
+            <Card>
+              <div className="h-96" />
+            </Card>
+          </div>
+        </TabPanel>
+      </TabPanels>
+    </>
   );
 }
