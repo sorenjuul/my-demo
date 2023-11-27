@@ -1,22 +1,25 @@
+'use client';
 import { MinusCircleIcon, CheckCircleIcon, ArrowCircleRightIcon } from '@heroicons/react/solid';
 
 import { Card, Icon, Title, Text, Flex, Tracker, Divider, Badge } from '@tremor/react';
-import { Machine } from '@/app/page';
 import Link from 'next/link';
+import { Machine } from '@/app/data/types';
+import MachineStateBadge from '@/app/components/machine-state-badge';
+import { slugify } from '@/app/helpers/slugify';
 
 export default function EquipmentStateCard({ item }: { item: Machine }) {
-  const cardLink = `/machines/${item.title.toLowerCase().replace(' ', '-')}`;
+  const cardLink = `/machines/${slugify(item.title)}`;
   return (
     <Link href={cardLink}>
       <Card>
         <Flex>
           <Title className="w-full">{item.title}</Title>
-          <Text title="test">{item.type}</Text>
           <Flex justifyContent="end" className="-space-x-2 -mr-2">
-            <Badge icon={MinusCircleIcon} color="rose">
-              Standing still
-            </Badge>
+            <MachineStateBadge state={item.currentState} />
           </Flex>
+        </Flex>
+        <Flex>
+          <Text title="test">{item.type}</Text>
         </Flex>
         <Divider />
         <Flex justifyContent="end" className="-space-x-2 -mr-2">
