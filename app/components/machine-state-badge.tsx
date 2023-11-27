@@ -1,3 +1,4 @@
+'use client';
 import { ArrowCircleRightIcon, CheckCircleIcon, MinusCircleIcon } from '@heroicons/react/solid';
 import { Badge } from '@tremor/react';
 import { State } from '@/app/data/types';

@@ -19,15 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Title>Equipment Dashboard</Title>
           <Text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</Text>
 
-          <TabGroup className="mt-6">
-            <TabList>
-              <Link href="/">
-                <Tab>Overview</Tab>
-              </Link>
-              <Tab>Detail</Tab>
-            </TabList>
-            <>{children}</>
-          </TabGroup>
+          {children}
         </main>
       </body>
     </html>
