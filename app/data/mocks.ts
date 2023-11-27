@@ -49,12 +49,7 @@ export const mockOrderRun: OrderRun = {
   end: new Date(),
 };
 
-export const mockOrderQueueItem: OrderQueueItem = {
-  order: mockOrder,
-  machine: mockMachine(),
-};
-
-export const mockOrderQueue: OrderQueue = [mockOrderQueueItem];
+export const mockOrderQueue: OrderQueue = [];
 
 export const getMockMachines = (): Machine[] => {
   if (mockMachinesStorage.length) {

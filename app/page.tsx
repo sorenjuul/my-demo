@@ -1,10 +1,12 @@
+export const dynamic = 'force-dynamic';
+
 import { Card, Grid, TabPanel, TabPanels } from '@tremor/react';
 import EquipmentStateCard from '@/app/components/equipment-state-card';
 import { Machine } from '@/app/data/types';
 import { fetchJson } from '@/app/helpers/fecther';
 
 async function fetchMachines(): Promise<Machine[]> {
-  return await fetchJson('/api/machines', { next: { revalidate: 1 } });
+  return await fetchJson('/api/machines', { next: { revalidate: 0 } });
 }
 export default async function DashboardExample() {
   const machines = await fetchMachines();
