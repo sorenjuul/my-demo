@@ -13,6 +13,7 @@ export type Machine = {
   uptime: string;
   data: State[];
   order?: Order;
+  queue?: OrderQueue;
 };
 export type Order = {
   id: number;
