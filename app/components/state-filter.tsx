@@ -9,7 +9,7 @@ export default function StateFilter() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  // refecth every 10 seconds
+  // refetch every 10 seconds
   useEffect(() => {
     const pollingInterval = setInterval(() => router.refresh(), 10000);
 
@@ -33,9 +33,9 @@ export default function StateFilter() {
   return (
     <Flex>
       <Select value={filter} onValueChange={updateFilter}>
-        <SelectItem value={slugify('Producing normally')}>Producing normally</SelectItem>
-        <SelectItem value={slugify('Starting up/Winding down')}>Starting up/Winding down</SelectItem>
-        <SelectItem value={slugify('Standing still')}>Standing still</SelectItem>
+        <SelectItem value={slugify('Operational')}>Operational</SelectItem>
+        <SelectItem value={slugify('Transitioning')}>Transitioning</SelectItem>
+        <SelectItem value={slugify('Idle')}>Idle</SelectItem>
       </Select>
     </Flex>
   );

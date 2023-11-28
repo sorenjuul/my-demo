@@ -1,10 +1,7 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import './globals.css';
-import { Tab, TabGroup, TabList, Text, Title } from '@tremor/react';
+import { Subtitle, Title } from '@tremor/react';
 import Link from 'next/link';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'My Demo App',
@@ -14,10 +11,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <main className="p-12">
-          <Title>Equipment Dashboard</Title>
-          <Text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</Text>
+      <body>
+        <main className="p-4 sm:p-12">
+          <Link href="/">
+            <Title>Equipment Dashboard</Title>
+            <Subtitle>My Demo App</Subtitle>
+          </Link>
           {children}
         </main>
       </body>

@@ -2,7 +2,7 @@ import { EquipmentType, Machine, Order, OrderQueue, OrderRun, State, StateColor,
 
 let mockMachinesStorage: Machine[] = [];
 
-export const mockStateText: StateText[] = ['Producing normally', 'Starting up/Winding down', 'Standing still'];
+export const mockStateText: StateText[] = ['Operational', 'Transitioning', 'Idle'];
 export const mockStateColor: StateColor[] = ['emerald', 'yellow', 'rose'];
 export const mockEquipmentType: EquipmentType[] = ['Type 1', 'Type 2', 'Type 3'];
 
@@ -44,12 +44,6 @@ export const mockMachine = (): Machine => {
     orderId: Math.floor(Math.random() * 100000),
     currentState: currentMockState[currentMockState.length - 1],
   };
-};
-
-export const mockOrderRun: OrderRun = {
-  orderId: Math.floor(Math.random() * 100000),
-  start: new Date(),
-  end: new Date(),
 };
 
 export const getMockMachines = (): Machine[] => {

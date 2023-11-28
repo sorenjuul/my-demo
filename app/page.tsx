@@ -1,8 +1,6 @@
-import { useState } from 'react';
-
 export const dynamic = 'force-dynamic';
 
-import { Flex, Grid, Select, SelectItem } from '@tremor/react';
+import { Grid } from '@tremor/react';
 import EquipmentStateCard from '@/app/components/equipment-state-card';
 import { Machine, StateText } from '@/app/data/types';
 import { fetchJson } from '@/app/helpers/fecther';

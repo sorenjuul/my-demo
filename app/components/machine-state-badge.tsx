@@ -5,22 +5,22 @@ import { State } from '@/app/data/types';
 
 export default function MachineStateBadge({ state }: { state: State }) {
   switch (state?.tooltip) {
-    case 'Producing normally':
+    case 'Operational':
       return (
         <Badge icon={CheckCircleIcon} color="emerald">
-          Producing normally
+          Operational
         </Badge>
       );
-    case 'Starting up/Winding down':
+    case 'Transitioning':
       return (
         <Badge icon={ArrowCircleRightIcon} color="yellow">
-          Starting up/Winding down
+          Transitioning
         </Badge>
       );
-    case 'Standing still':
+    case 'Idle':
       return (
         <Badge icon={MinusCircleIcon} color="rose">
-          Standing still
+          Idle
         </Badge>
       );
   }

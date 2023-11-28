@@ -8,11 +8,11 @@ import { useState } from 'react';
 export default function StateSwitch({ tooltip }: { tooltip: StateText }) {
   const getMachineState = (state: string) => {
     switch (state) {
-      case 'Producing normally':
+      case 'Operational':
         return 0;
-      case 'Starting up/Winding down':
+      case 'Transitioning':
         return 1;
-      case 'Standing still':
+      case 'Idle':
         return 2;
     }
   };
@@ -30,14 +30,20 @@ export default function StateSwitch({ tooltip }: { tooltip: StateText }) {
   };
 
   return (
-    <>
+    <div>
       <TabGroup index={index} onIndexChange={setIndex}>
         <TabList variant="solid" color={getMachineStateColor(index)}>
-          <Tab icon={CheckCircleIcon}>Producing normally</Tab>
-          <Tab icon={ArrowCircleRightIcon}>Starting up/Winding down</Tab>
-          <Tab icon={MinusCircleIcon}>Standing still</Tab>
+          <Tab className="text-inherit truncate" icon={CheckCircleIcon}>
+            <p className="truncate">Operational</p>
+          </Tab>
+          <Tab className="text-inherit truncate" icon={ArrowCircleRightIcon}>
+            Transitioning
+          </Tab>
+          <Tab className="text-inherit truncate" icon={MinusCircleIcon}>
+            Idle
+          </Tab>
         </TabList>
       </TabGroup>
-    </>
+    </div>
   );
 }

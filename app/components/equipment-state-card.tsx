@@ -1,7 +1,6 @@
 'use client';
 import { MinusCircleIcon, CheckCircleIcon, ArrowCircleRightIcon } from '@heroicons/react/solid';
-
-import { Card, Icon, Title, Text, Flex, Tracker, Divider, Badge } from '@tremor/react';
+import { Card, Icon, Title, Text, Flex, Tracker, Divider } from '@tremor/react';
 import Link from 'next/link';
 import { Machine } from '@/app/data/types';
 import MachineStateBadge from '@/app/components/machine-state-badge';
@@ -23,9 +22,9 @@ export default function EquipmentStateCard({ item }: { item: Machine }) {
         </Flex>
         <Divider />
         <Flex justifyContent="end" className="-space-x-2 -mr-2">
-          <Icon icon={CheckCircleIcon} color="emerald" tooltip="Producing normally" />
-          <Icon icon={ArrowCircleRightIcon} color="yellow" tooltip="Starting up/Winding down" />
-          <Icon icon={MinusCircleIcon} color="rose" tooltip="Standing still" />
+          <Icon icon={CheckCircleIcon} color="emerald" tooltip="Operational" />
+          <Icon icon={ArrowCircleRightIcon} color="yellow" tooltip="Transitioning" />
+          <Icon icon={MinusCircleIcon} color="rose" tooltip="Idle" />
         </Flex>
         <Flex className="mt-4">
           <Text>Uptime</Text>

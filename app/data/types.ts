@@ -1,4 +1,4 @@
-export type StateText = 'Producing normally' | 'Starting up/Winding down' | 'Standing still';
+export type StateText = 'Operational' | 'Transitioning' | 'Idle';
 export type StateColor = 'emerald' | 'yellow' | 'rose';
 export type State = {
   color: StateColor;
@@ -25,9 +25,5 @@ export type OrderRun = {
   orderId: number;
   start: Date;
   end: Date;
-};
-export type OrderQueueItem = {
-  order: Order;
-  machine: Machine;
 };
 export type OrderQueue = Order[];

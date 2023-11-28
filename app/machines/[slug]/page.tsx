@@ -1,5 +1,3 @@
-import MachineStateBadge from '@/app/components/machine-state-badge';
-
 export const dynamic = 'force-dynamic';
 
 import { Machine } from '@/app/data/types';
@@ -9,21 +7,16 @@ import {
   Card,
   Divider,
   Flex,
-  Grid,
   ProgressBar,
-  Tab,
-  TabGroup,
   Table,
   TableBody,
   TableCell,
   TableHead,
   TableHeaderCell,
   TableRow,
-  TabList,
   Text,
   Title,
 } from '@tremor/react';
-import { CheckCircleIcon } from '@heroicons/react/solid';
 import StateSwitch from '@/app/components/state-switch';
 
 async function fetchMachine(slug: string): Promise<Machine> {
@@ -34,16 +27,17 @@ export default async function Page({ params }: { params: { slug: string } }) {
   const machine = await fetchMachine(params.slug);
 
   return (
-    <Card className="mt-6">
+    <Card className="mt-6 p-2 sm:p-6">
       <Flex>
-        <Title className="w-full">{machine.title}</Title>
-        <Flex justifyContent="end" className="-space-x-2 -mr-2">
-          <StateSwitch tooltip={machine.currentState.tooltip} />
-        </Flex>
+        <Title className="truncate">{machine.title}</Title>
       </Flex>
       <Flex>
         <Text>{machine.type}</Text>
       </Flex>
+      <Flex justifyContent="end" alignItems="end">
+        <StateSwitch tooltip={machine.currentState.tooltip} />
+      </Flex>
+
       <Divider />
       <Flex className="mt-4">
         <Text>
