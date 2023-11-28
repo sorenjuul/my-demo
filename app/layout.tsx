@@ -18,7 +18,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main className="p-12">
           <Title>Equipment Dashboard</Title>
           <Text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</Text>
-
           {children}
         </main>
       </body>

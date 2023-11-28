@@ -1,15 +1,4 @@
-import {
-  EquipmentType,
-  Machine,
-  Order,
-  OrderQueue,
-  OrderQueueItem,
-  OrderRun,
-  State,
-  StateColor,
-  StateText,
-} from '@/app/data/types';
-import { slugify } from '@/app/helpers/slugify';
+import { EquipmentType, Machine, Order, OrderQueue, OrderRun, State, StateColor, StateText } from '@/app/data/types';
 
 let mockMachinesStorage: Machine[] = [];
 
