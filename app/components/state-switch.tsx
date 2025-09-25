@@ -1,7 +1,7 @@
 'use client';
 
 import { Tab, TabGroup, TabList } from '@tremor/react';
-import { ArrowCircleRightIcon, CheckCircleIcon, MinusCircleIcon } from '@heroicons/react/solid';
+import { ArrowRightCircleIcon, CheckCircleIcon, MinusCircleIcon } from '@heroicons/react/24/solid';
 import { StateText } from '@/app/data/types';
 import { useState } from 'react';
 
@@ -36,7 +36,7 @@ export default function StateSwitch({ tooltip }: { tooltip: StateText }) {
           <Tab className="text-inherit truncate" icon={CheckCircleIcon}>
             <p className="truncate">Operational</p>
           </Tab>
-          <Tab className="text-inherit truncate" icon={ArrowCircleRightIcon}>
+          <Tab className="text-inherit truncate" icon={ArrowRightCircleIcon}>
             Transitioning
           </Tab>
           <Tab className="text-inherit truncate" icon={MinusCircleIcon}>

@@ -2,28 +2,16 @@ export const dynamic = 'force-dynamic';
 
 import { Machine } from '@/app/data/types';
 import { fetchJson } from '@/app/helpers/fecther';
-import {
-  Bold,
-  Card,
-  Divider,
-  Flex,
-  ProgressBar,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeaderCell,
-  TableRow,
-  Text,
-  Title,
-} from '@tremor/react';
+import { Bold, Card, Divider, Flex, Text, Title } from '@tremor/react';
 import StateSwitch from '@/app/components/state-switch';
+import { MachineTable } from '@/app/components/machine-table';
 
 async function fetchMachine(slug: string): Promise<Machine> {
   return await fetchJson(`/api/machines/${slug}`, { next: { revalidate: 0 } });
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
+export default async function Page(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const machine = await fetchMachine(params.slug);
 
   return (
@@ -45,29 +33,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
         </Text>
         <Text>45%</Text>
       </Flex>
-      <ProgressBar value={45} color="teal" className="mt-3" />
       <Divider />
       <Title className="mt-8">Queued Orders</Title>
-      <Table className="mt-6">
-        <TableHead>
-          <TableRow>
-            <TableHeaderCell>Queue number</TableHeaderCell>
-            <TableHeaderCell>Order Id</TableHeaderCell>
-            <TableHeaderCell>Model</TableHeaderCell>
-            <TableHeaderCell>Quantity</TableHeaderCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {machine.queue?.map((order, index) => (
-            <TableRow key={index}>
-              <TableCell>{index + 1}</TableCell>
-              <TableCell>{order.id}</TableCell>
-              <TableCell>{order.model}</TableCell>
-              <TableCell>{order.quantity}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+      <MachineTable machine={machine} />
     </Card>
   );
 }

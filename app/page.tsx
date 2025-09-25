@@ -9,11 +9,12 @@ import StateFilter from '@/app/components/state-filter';
 async function fetchMachines(filter: string | undefined): Promise<Machine[]> {
   return await fetchJson(`/api/machines${filter ? '?filter=' + filter : ''}`, { next: { revalidate: 0 } });
 }
-export default async function DashboardExample({
-  searchParams,
-}: {
-  searchParams?: { [key: string]: string | undefined };
-}) {
+export default async function DashboardExample(
+  props: {
+    searchParams?: Promise<{ [key: string]: string | undefined }>;
+  }
+) {
+  const searchParams = await props.searchParams;
   const filter = searchParams?.filter;
   const machines = await fetchMachines(filter);
   return (

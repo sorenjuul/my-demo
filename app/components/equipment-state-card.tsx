@@ -1,5 +1,5 @@
 'use client';
-import { MinusCircleIcon, CheckCircleIcon, ArrowCircleRightIcon } from '@heroicons/react/solid';
+import { MinusCircleIcon, CheckCircleIcon, ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import { Card, Icon, Title, Text, Flex, Tracker, Divider } from '@tremor/react';
 import Link from 'next/link';
 import { Machine } from '@/app/data/types';
@@ -23,7 +23,7 @@ export default function EquipmentStateCard({ item }: { item: Machine }) {
         <Divider />
         <Flex justifyContent="end" className="-space-x-2 -mr-2">
           <Icon icon={CheckCircleIcon} color="emerald" tooltip="Operational" />
-          <Icon icon={ArrowCircleRightIcon} color="yellow" tooltip="Transitioning" />
+          <Icon icon={ArrowRightCircleIcon} color="yellow" tooltip="Transitioning" />
           <Icon icon={MinusCircleIcon} color="rose" tooltip="Idle" />
         </Flex>
         <Flex className="mt-4">
