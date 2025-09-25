@@ -1,5 +1,5 @@
 'use client';
-import { ArrowCircleRightIcon, CheckCircleIcon, MinusCircleIcon } from '@heroicons/react/solid';
+import { CheckCircleIcon, MinusCircleIcon, ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import { Badge } from '@tremor/react';
 import { State } from '@/app/data/types';
 
@@ -13,7 +13,7 @@ export default function MachineStateBadge({ state }: { state: State }) {
       );
     case 'Transitioning':
       return (
-        <Badge icon={ArrowCircleRightIcon} color="yellow">
+        <Badge icon={ArrowRightCircleIcon} color="yellow">
           Transitioning
         </Badge>
       );
